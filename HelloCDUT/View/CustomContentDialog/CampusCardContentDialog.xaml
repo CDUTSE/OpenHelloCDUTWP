@@ -1,0 +1,52 @@
+﻿<ContentDialog
+    x:Class="你好理工.View.CustomContentDialog.CampusCardContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View.CustomContentDialog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="需要输入验证码"
+    PrimaryButtonText="确定"  
+    FullSizeDesired="False"
+    Loaded="ContentDialog_Loaded"
+    SecondaryButtonText="取消"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid x:Name="getAuthGrid" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+       
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch" Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="captchaTextBlock" Grid.Column="0" PlaceholderText="右侧验证码" 
+                         />
+                <Grid Grid.Column="1"  HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button HorizontalAlignment="Left" x:Name="btnRefresh" MinWidth="0"
+                                    Grid.Column="0" 
+                                    Click="btnRefresh_Click" VerticalAlignment="Stretch">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Refresh" />
+                        </Button.Content>
+                    </Button>
+                    <Image x:Name="authCodeImage" HorizontalAlignment="Stretch" 
+                                   Grid.Column="1">
+                    </Image>
+                </Grid>
+            </Grid>
+            <!--<Button Grid.Row="1" x:Name="captchaBtn" Click="captchaBtn_Click"
+                                    Margin="10,0"
+                                    Style="{ThemeResource LightButtonStyle}" Content="确定"/>-->
+        </Grid>
+    </StackPanel>
+</ContentDialog>

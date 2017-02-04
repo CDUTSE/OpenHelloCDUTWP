@@ -1,0 +1,859 @@
+{
+    "result": true,
+    "message": "查询课表成功",
+    "term_begin": [
+        3,
+        9
+    ],
+    "class": [
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13
+            ],
+            "what_day": 2,
+            "begin": 0,
+            "section": "2",
+            "full_name": "大学英语Ⅱ（4） ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "甘咏",
+            "period": "48",
+            "room": "4401",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13
+            ],
+            "what_day": 2,
+            "begin": 2,
+            "section": "2",
+            "full_name": "概率论与数理统计 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "杨建康",
+            "period": "48",
+            "room": "1207",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1
+            ],
+            "what_day": 2,
+            "begin": 7,
+            "section": "2",
+            "full_name": "艺术欣赏 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "谢洪波",
+            "period": "32",
+            "room": "2301",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1
+            ],
+            "what_day": 2,
+            "begin": 9,
+            "section": "3",
+            "full_name": "数值计算方法 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "4",
+            "teacher": "唐云",
+            "period": "48",
+            "room": "9C307",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "what_day": 3,
+            "begin": 2,
+            "section": "2",
+            "full_name": "汇编语言程序设计 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "张芬",
+            "period": "32",
+            "room": "6B101",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+            ],
+            "what_day": 3,
+            "begin": 9,
+            "section": "3",
+            "full_name": "软件工程 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "64",
+            "room": "6A409",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                10,
+                11,
+                12
+            ],
+            "what_day": 4,
+            "begin": 0,
+            "section": "2",
+            "full_name": "概率论与数理统计 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "杨建康",
+            "period": "48",
+            "room": "1207",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+            ],
+            "what_day": 4,
+            "begin": 2,
+            "section": "2",
+            "full_name": "大学体育（4） ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "舒云久",
+            "period": "32",
+            "room": "TL05",
+            "note": "备注:篮球\r\n"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+            ],
+            "what_day": 4,
+            "begin": 7,
+            "section": "2",
+            "full_name": "艺术欣赏 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "谢洪波",
+            "period": "32",
+            "room": "2301",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                7,
+                8
+            ],
+            "what_day": 4,
+            "begin": 9,
+            "section": "3",
+            "full_name": "数值计算方法 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "4",
+            "teacher": "唐云",
+            "period": "48",
+            "room": "6B306",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                10,
+                11,
+                12,
+                13
+            ],
+            "what_day": 5,
+            "begin": 2,
+            "section": "2",
+            "full_name": "大学英语Ⅱ（4） ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "甘咏",
+            "period": "48",
+            "room": "4401",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17
+            ],
+            "what_day": 5,
+            "begin": 5,
+            "section": "2",
+            "full_name": "马克思主义基本原理 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "孙大飞",
+            "period": "32",
+            "room": "3103",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                10,
+                11
+            ],
+            "what_day": 5,
+            "begin": 9,
+            "section": "3",
+            "full_name": "软件工程 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "64",
+            "room": "6A409",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                1
+            ],
+            "what_day": 6,
+            "begin": 0,
+            "section": "2",
+            "full_name": "马克思主义基本原理 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "孙大飞",
+            "period": "32",
+            "room": "3103",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                2,
+                3,
+                4,
+                6,
+                7,
+                8,
+                9
+            ],
+            "what_day": 1,
+            "begin": 5,
+            "section": "2",
+            "full_name": "汇编语言程序设计 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "张芬",
+            "period": "32",
+            "room": "9C307",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                2,
+                4
+            ],
+            "what_day": 1,
+            "begin": 9,
+            "section": "3",
+            "full_name": "形势与政策（4） ",
+            "category": "理",
+            "is_OverLap_Class": 1,
+            "credits": ".5",
+            "teacher": "杨一",
+            "period": "8",
+            "room": "6C205",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                2,
+                3,
+                4,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                5
+            ],
+            "what_day": 2,
+            "begin": 9,
+            "section": "3",
+            "full_name": "性心理学 ",
+            "category": "理",
+            "is_OverLap_Class": 1,
+            "credits": "2",
+            "teacher": "廖怀高",
+            "period": "32",
+            "room": "6B208",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                3,
+                7,
+                8,
+                9
+            ],
+            "what_day": 1,
+            "begin": 9,
+            "section": "3",
+            "full_name": "通俗歌唱艺术 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "张春光",
+            "period": "32",
+            "room": "N6303",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                4,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "what_day": 1,
+            "begin": 0,
+            "section": "2",
+            "full_name": "汇编语言程序设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "3",
+            "teacher": "张芬",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单数选R01\r\n"
+        },
+        {
+            "week_num": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "what_day": 1,
+            "begin": 7,
+            "section": "2",
+            "full_name": "数值计算方法 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "4",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号同学选R01\r\n"
+        },
+        {
+            "week_num": [
+                6
+            ],
+            "what_day": 1,
+            "begin": 9,
+            "section": "2",
+            "full_name": "形势与政策（4） ",
+            "category": "理",
+            "is_OverLap_Class": 1,
+            "credits": ".5",
+            "teacher": "杨一",
+            "period": "8",
+            "room": "6C205",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                6
+            ],
+            "what_day": 1,
+            "begin": 11,
+            "section": 1,
+            "full_name": "通俗歌唱艺术 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "张春光",
+            "period": "32",
+            "room": "N6303",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17
+            ],
+            "what_day": 2,
+            "begin": 5,
+            "section": "2",
+            "full_name": "高级Web应用开发技术 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2.5",
+            "teacher": "刘恒",
+            "period": "24",
+            "room": "9C307",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                6,
+                7,
+                9,
+                8
+            ],
+            "what_day": 2,
+            "begin": 7,
+            "section": "2",
+            "full_name": "数值计算方法 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "4",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号同学选R01\r\n"
+        },
+        {
+            "week_num": [
+                10,
+                11,
+                12
+            ],
+            "what_day": 1,
+            "begin": 9,
+            "section": "3",
+            "full_name": "软件工程 ",
+            "category": "实",
+            "is_OverLap_Class": 1,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号选R01\r\n"
+        },
+        {
+            "week_num": [
+                10,
+                12
+            ],
+            "what_day": 2,
+            "begin": 7,
+            "section": "2",
+            "full_name": "软件工程 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号选R01\r\n"
+        },
+        {
+            "week_num": [
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                17,
+                16
+            ],
+            "what_day": 3,
+            "begin": 2,
+            "section": "2",
+            "full_name": "高级Web应用开发技术 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2.5",
+            "teacher": "刘恒",
+            "period": "16",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12
+            ],
+            "what_day": 2,
+            "begin": 9,
+            "section": "2",
+            "full_name": "性心理学 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "廖怀高",
+            "period": "32",
+            "room": "6B208",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12
+            ],
+            "what_day": 3,
+            "begin": 9,
+            "section": "2",
+            "full_name": "软件工程 ",
+            "category": "理",
+            "is_OverLap_Class": 1,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "64",
+            "room": "6A409",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12
+            ],
+            "what_day": 5,
+            "begin": 9,
+            "section": "2",
+            "full_name": "软件工程 ",
+            "category": "理",
+            "is_OverLap_Class": 0,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "64",
+            "room": "6A409",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12,
+                13
+            ],
+            "what_day": 6,
+            "begin": 0,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12,
+                13
+            ],
+            "what_day": 6,
+            "begin": 5,
+            "section": "7",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12,
+                13
+            ],
+            "what_day": 7,
+            "begin": 0,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                12,
+                13
+            ],
+            "what_day": 7,
+            "begin": 5,
+            "section": "7",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                13,
+                14
+            ],
+            "what_day": 1,
+            "begin": 0,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                13
+            ],
+            "what_day": 1,
+            "begin": 9,
+            "section": "2",
+            "full_name": "软件工程 ",
+            "category": "实",
+            "is_OverLap_Class": 1,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号选R01\r\n"
+        },
+        {
+            "week_num": [
+                13
+            ],
+            "what_day": 1,
+            "begin": 11,
+            "section": 1,
+            "full_name": "软件工程 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "5",
+            "teacher": "唐云",
+            "period": "16",
+            "room": "6A501",
+            "note": "备注:1班全班和2班单号选R01\r\n"
+        },
+        {
+            "week_num": [
+                13,
+                14
+            ],
+            "what_day": 5,
+            "begin": 7,
+            "section": "5",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                14
+            ],
+            "what_day": 1,
+            "begin": 5,
+            "section": "6",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                14
+            ],
+            "what_day": 2,
+            "begin": 0,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                14
+            ],
+            "what_day": 2,
+            "begin": 7,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        },
+        {
+            "week_num": [
+                14
+            ],
+            "what_day": 5,
+            "begin": 0,
+            "section": "4",
+            "full_name": "Web应用开发课程设计 ",
+            "category": "实",
+            "is_OverLap_Class": 0,
+            "credits": "2",
+            "teacher": "刘恒",
+            "period": "0",
+            "room": "6A501",
+            "note": "NONE"
+        }
+    ]
+}

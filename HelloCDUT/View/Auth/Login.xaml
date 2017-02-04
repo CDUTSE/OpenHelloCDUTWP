@@ -1,0 +1,148 @@
+﻿<Page
+    x:Class="你好理工.View.Auth.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    
+    <Page.Resources>
+        <Style x:Key="HyperLinkButtonStyle" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="{ThemeResource AppThemeColorBrush}"/>
+        </Style>
+
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="BackgroundElement" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" Margin="{TemplateBinding BorderThickness}" CornerRadius="2"/>
+                            <Border x:Name="BorderElement" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"  CornerRadius="2"/>
+                            <Image Grid.Column="0" Source="ms-appx:////Assets/Logo.png" Width="30" Height="30" Stretch="UniformToFill" ></Image>
+                            <ScrollViewer Grid.Column="1" x:Name="ContentElement" VerticalAlignment="Center" AutomationProperties.AccessibilityView="Raw" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsTabStop="False" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Margin="{TemplateBinding BorderThickness}" MinHeight="{ThemeResource TextControlThemeMinHeight}" Padding="{TemplateBinding Padding}"  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled"/>
+                            <ContentControl Grid.Column="1" x:Name="PlaceholderTextContentPresenter" Content="{TemplateBinding PlaceholderText}" Foreground="{ThemeResource TextBoxPlaceholderTextThemeBrush}" FontSize="{ThemeResource ContentControlFontSize}" IsTabStop="False" Margin="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PasswordBoxStyle1" TargetType="PasswordBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" x:Name="BackgroundElement" Background="{TemplateBinding Background}" Margin="{TemplateBinding BorderThickness}" CornerRadius="2"/>
+                            <Border Grid.ColumnSpan="2" x:Name="BorderElement" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"/>
+                            <Image Grid.Column="0" Source="/Assets/Lock.png" Width="30" Height="30" Stretch="UniformToFill" ></Image>
+                            <ScrollViewer Grid.Column="1" x:Name="ContentElement" AutomationProperties.AccessibilityView="Raw" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsTabStop="False" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" Margin="{ThemeResource RichEditBoxTextThemeMargin}" MinHeight="{ThemeResource TextControlThemeMinHeight}" Padding="{TemplateBinding Padding}"  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="Disabled"/>
+                            <ContentControl VerticalAlignment="Center" Grid.Column="1" x:Name="PlaceholderTextContentPresenter" Content="{TemplateBinding PlaceholderText}" Foreground="{ThemeResource TextBoxPlaceholderTextThemeBrush}" IsTabStop="False" Margin="{ThemeResource RichEditBoxTextThemeMargin}" Padding="{TemplateBinding Padding}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </Page.Resources>
+    <Grid >
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="AppName" x:Uid="AppName" Text="你好理工" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <StackPanel Margin="20">
+                    <TextBox x:Name="txtAccount" Style="{ThemeResource LightTextBox}"
+                             PlaceholderText="账号" 
+                             PreventKeyboardDisplayOnProgrammaticFocus="True"/>
+                    <PasswordBox x:Name="txtPwd"   PreventKeyboardDisplayOnProgrammaticFocus="True" 
+                                 PlaceholderText="密码" Style="{ThemeResource LightPasswordStyle}"
+                                 />
+                    <Grid>
+                        <HyperlinkButton Content="忘记密码？" x:Name="notLoginHyperLink" 
+                                         x:Uid="Auth_ForgetPassword"
+                                         Click="notLoginHyperLink_Click" 
+                                         Style="{StaticResource HyperLinkButtonStyle}"
+                                     HorizontalAlignment="Left"/>
+                        <HyperlinkButton Content="新用户注册" x:Name="registerHyperLink" 
+                                         x:Uid="Auth_NewUserRegister"
+                                         Style="{StaticResource HyperLinkButtonStyle}" 
+                                         HorizontalAlignment="Right" Click="registerHyperLink_Click"/>
+                    </Grid>
+                    <Button Content="登录" x:Uid="Auth_Login" Style="{ThemeResource LightButtonStyle}" 
+                            Click="AppBarButton_Click" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        <Grid x:Name="loadingGrid" Margin="0,-30,0,-2" Background="Black" Opacity="0.6" 
+              Visibility="Collapsed" >
+            <Border Background="White" CornerRadius="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" 
+                        VerticalAlignment="Center" >
+                
+                    <ProgressRing  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           BorderBrush="White" IsActive="True" Width="70" Height="70"
+                           Foreground="Black" Background="Transparent" Margin="15" />
+                    <TextBlock Text="正在登录" VerticalAlignment="Center" FontSize="20" Margin="15"
+                           HorizontalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+            </Border>
+        </Grid>
+        <!--登录-->
+        <Popup x:Name="loginLoadingPop"  Margin="0,-30,0,0" Visibility="Collapsed">
+                <Popup.Child>
+                    <Border Background="Black" Opacity="0.7" x:Name="pop_Border">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <ProgressRing  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           BorderBrush="White" IsActive="True" Width="100" Height="100"
+                           Foreground="White" Background="Transparent" />
+                        <TextBlock Text="正在登录"/>
+                    </StackPanel>
+                </Border>
+                </Popup.Child>
+            
+        </Popup>
+        
+        <!--显示错误信息--><!--
+        <Popup x:Name="messagePopup" HorizontalAlignment="Center"  VerticalAlignment="Center" IsLightDismissEnabled="True">
+            <Popup.Child>
+                <Grid x:Name="messageGrid" >
+                    <Border Background="Black" Opacity="0.5" HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <TextBlock x:Name="messageTextBlock" FontSize="25"/>
+                    </Border>
+                </Grid>
+            </Popup.Child>
+        </Popup>-->
+    </Grid>
+    
+    <!--<Page.BottomAppBar>
+        <CommandBar Background="{ThemeResource AppThemeColorBrush}" 
+                    Foreground="White"
+                    x:Name="appBar" Visibility="Collapsed">
+            <AppBarButton Icon="Accept" Label="登录"  Click="AppBarButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>-->
+</Page>

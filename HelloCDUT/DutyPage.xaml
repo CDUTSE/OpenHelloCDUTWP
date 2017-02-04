@@ -1,0 +1,425 @@
+﻿<Page
+    x:Class="你好理工.DutyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Light" 
+
+    >
+	
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <ContinuumNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    
+    <Page.Resources>
+        <!-- 日历标题样式 -->
+        <Style x:Key="CTitleCss" TargetType="TextBlock">
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <!-- 日历标题样式(绿色) -->
+        <Style x:Key="CTitlerGreen" TargetType="TextBlock">
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Foreground" Value="Green" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        
+        <!--课程按钮样式-->
+        <Style x:Key="ScheduleButton" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Orange"/>
+        </Style>
+		<!--课程序号样式-->
+		<Style x:Key="ScheduleNumber" TargetType="TextBlock">
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot" >
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 标题面板 -->
+        <Grid x:Name="TitlePanel" Grid.Row="0" Background="#FF6DAEE6"  Margin="0,-26.77,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0">
+                <TextBlock x:Name="txtTitle"  FontSize="30" Text="日程"  Foreground="White" Margin="2,34,0,0"/>
+                <!--<ComboBox  BorderThickness="0" HorizontalAlignment="Center" 
+                           VerticalAlignment="Bottom" x:Name="cmb"
+                           Foreground="White" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Content="第一周" IsSelected="True" />
+                    <ComboBoxItem Content="第二周"/>
+                </ComboBox>-->
+            </Grid>
+            
+            <!--星期-->
+            <Grid Margin="0,0,0,0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="序号" FontSize="20" Grid.Column="0" Style="{StaticResource CTitleCss}"/>
+                <TextBlock Text="一" Grid.Row="1" Grid.Column="1" Style="{StaticResource CTitleCss}" />
+                <TextBlock Text="二" Grid.Row="1" Grid.Column="2" Style="{StaticResource CTitleCss}" />
+                <TextBlock Text="三" Grid.Row="1" Grid.Column="3" Style="{StaticResource CTitleCss}" />
+                <TextBlock Text="四" Grid.Row="1" Grid.Column="4" Style="{StaticResource CTitleCss}" />
+                <TextBlock Text="五" Grid.Row="1" Grid.Column="5" Style="{StaticResource CTitleCss}" />
+                <TextBlock Text="六" Grid.Row="1" Grid.Column="6" Style="{StaticResource CTitlerGreen}" />
+                <TextBlock Text="日" Grid.Row="1" Grid.Column="7" Style="{StaticResource CTitlerGreen}" />
+            </Grid>
+        </Grid>
+
+        <!--课程Gird-->
+        <Grid Grid.Row="1" x:Name="ScheduleGrid">
+            <!--每天的课 12-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--7周-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--序号-->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="1" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="2" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="3" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="4" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="午" FontSize="19" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="5" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="6" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="7" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="8" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="9" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="10" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+            <TextBlock Grid.Row="11" Grid.Column="0" Text="11" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+
+            <!--<Pivot x:Name="schedulePivot"
+                   
+                   ItemsSource="{Binding}"
+                   SelectionChanged="schedulePivot_SelectionChanged">
+
+                <Pivot.Template>
+                    <ControlTemplate>
+                        --><!--课程表显示--><!--
+                        <Grid x:Name="scheduleGrid"  
+                              FlowDirection="LeftToRight"
+							  HorizontalAlignment="Stretch"
+							  ScrollViewer.IsZoomInertiaEnabled="True" 
+                              ScrollViewer.HorizontalScrollMode="Enabled"
+                              
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            >
+                            --><!--<Grid.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.ChildrenTransitions>-->
+
+                            <!--每天的课  12--><!--
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
+                                --><!--<RowDefinition Height="*"/>--><!--
+
+                            </Grid.RowDefinitions>
+
+                            --><!--7天 加一列显示数字--><!--
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            --><!--第一列显示课程编号--><!--
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="1" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="2" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="3" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="4" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="午" FontSize="19" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="5" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="6" Grid.Column="0" Text="6" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="7" Grid.Column="0" Text="7" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="8" Grid.Column="0" Text="8" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="9" Grid.Column="0" Text="9" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="10" Grid.Column="0" Text="10" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+                            <TextBlock Grid.Row="11" Grid.Column="0" Text="11" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+
+                        </Grid>
+                    </ControlTemplate>
+                </Pivot.Template>
+                
+                <Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding class}" FontSize="10"/>
+                    </DataTemplate>
+                </Pivot.HeaderTemplate>
+
+                
+                
+                <Pivot.ItemTemplate>
+                    <DataTemplate>
+                        <ListView ItemsSource="{Binding Path=class}" DataContext="{Binding Path=class}">
+                            
+                            <ListView.Template>
+                                <ControlTemplate>
+                                    --><!--课程表显示--><!--
+                                    <Grid x:Name="scheduleGrid"  
+                              FlowDirection="LeftToRight"
+							  HorizontalAlignment="Stretch"
+							  ScrollViewer.IsZoomInertiaEnabled="True" 
+                              ScrollViewer.HorizontalScrollMode="Enabled"
+                              
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            >
+                                        <Grid.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.ChildrenTransitions>
+
+                                        --><!--每天的课  12--><!--
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+
+                                            <RowDefinition Height="*"/>
+
+                                        </Grid.RowDefinitions>
+
+                                        --><!--7天 加一列显示数字--><!--
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        --><!--第一列显示课程编号--><!--
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="1" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="2" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="3" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="4" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Text="午" FontSize="19" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="5" Grid.Column="0" Text="5" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="6" Grid.Column="0" Text="6" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="7" Grid.Column="0" Text="7" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="8" Grid.Column="0" Text="8" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="9" Grid.Column="0" Text="9" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="10" Grid.Column="0" Text="10" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+                                        <TextBlock Grid.Row="11" Grid.Column="0" Text="11" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+
+                                    </Grid>
+                                </ControlTemplate>
+                            </ListView.Template>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DataTemplate>
+
+                </Pivot.ItemTemplate>
+                
+                
+                
+                
+                --><!--<PivotItem x:Name="pivotItem1" DataContext="{Binding scheduleCollection}">
+                    <ListView ItemsSource="{Binding scheduleCollection}">
+                        <ListView.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition FromHorizontalOffset="30"/>
+                                <RepositionThemeTransition/>
+                            </TransitionCollection>
+                        </ListView.Transitions>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <ListView ItemsSource="{Binding class}"
+                                              ItemClick="ListView_ItemClick"
+                                              IsItemClickEnabled="True"
+                                              CanDragItems="False"
+                                              ShowsScrollingPlaceholders="True">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border HorizontalAlignment="Stretch" Background="Transparent">
+                                                    <StackPanel HorizontalAlignment="Stretch">
+                                                        <TextBlock Text="{Binding full_name}" FontSize="30"/>
+                                                        <TextBlock Text="{Binding teacher,Mode=TwoWay}" FontSize="20"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </PivotItem>-->
+                
+                <!--<PivotItem Margin="10,0,0,0" >
+                    <ScrollViewer 
+                        ScrollViewer.HorizontalScrollMode="Enabled">
+                        --><!--课程表显示--><!--
+                        
+                            <Grid x:Name="scheduleGrid"  
+                              FlowDirection="LeftToRight"
+							  HorizontalAlignment="Stretch"
+							  ScrollViewer.IsZoomInertiaEnabled="True" 
+                              ScrollViewer.HorizontalScrollMode="Enabled"
+                              ScrollViewer.VerticalScrollMode="Enabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                            >
+                                --><!--<Grid.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </Grid.ChildrenTransitions>-->
+                                <!--每天的课  12--><!--
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    --><!--<RowDefinition Height="*"/>--><!--
+                                </Grid.RowDefinitions>
+                                --><!--7天 加一列显示数字--><!--
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                --><!--第一列显示课程编号--><!--
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="1" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="2" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="3" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="4" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="午" FontSize="19" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="5" Grid.Column="0" Text="5" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="6" Grid.Column="0" Text="6" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="7" Grid.Column="0" Text="7" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="8" Grid.Column="0" Text="8" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="9" Grid.Column="0" Text="9" FontSize="20" Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="10" Grid.Column="0" Text="10" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+                                <TextBlock Grid.Row="11" Grid.Column="0" Text="11" FontSize="20"  Style="{StaticResource ScheduleNumber}"/>
+                           
+                        </Grid>
+                     
+                    </ScrollViewer>
+                </PivotItem>--><!--
+                
+            </Pivot>-->
+        </Grid>
+    </Grid>
+</Page>

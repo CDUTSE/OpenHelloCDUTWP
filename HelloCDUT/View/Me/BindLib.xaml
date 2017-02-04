@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="你好理工.View.Me.BindLib"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View.Scholl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="AppName" Text="绑定借阅证" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <StackPanel Margin="15,10">
+                    <TextBox x:Name="txtLibAccount"  PlaceholderText="借阅证账号 (学号)" Style="{ThemeResource LightTextBox}"/>
+                    <TextBox  x:Name="txtLibPwdBox" PlaceholderText="借阅证密码 (可能为身份证后六位)" Style="{ThemeResource LightTextBox}"/>
+                    <Button Content="绑定" x:Name="bindLibBtn" Click="bindLibBtn_Click" Style="{ThemeResource LightButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

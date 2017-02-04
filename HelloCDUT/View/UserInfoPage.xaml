@@ -1,0 +1,199 @@
+﻿<Page
+    x:Class="你好理工.View.UserInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock Text="我的资料" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}">
+                <ListView x:Name="userInfoListBox" Background="Transparent" 
+                          ScrollViewer.VerticalScrollMode="Enabled" >
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <!--<Setter Property="Margin" Value="0,5"/>-->
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="UserInfoListViewItemTemplate">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock HorizontalAlignment="Left" Text="{Binding Title}" FontSize="24"/>
+                                    <TextBlock HorizontalAlignment="Right" Text="{Binding Desc}" FontSize="24"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                    <ListView.Items>
+                        <ListViewItem x:Name="ltAvatar" >
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock HorizontalAlignment="Left" Text="头像" 
+                                               FontSize="25" VerticalAlignment="Center"/>
+                                    <Rectangle  Width="100" Height="100" HorizontalAlignment="Right">
+                                        <Rectangle.Fill>
+                                            <ImageBrush x:Name="avatarImgBrush"  ImageSource="ms-appx:///Assets/DefaultAvatar.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                     
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltAccount" >
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="账号" HorizontalAlignment="Left" FontSize="25" 
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="accountTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltNickName">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="昵称" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="nickNameTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltMotto">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="座右铭" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="mottoTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltLoveStatus">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="恋爱状态" HorizontalAlignment="Left" FontSize="25" 
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="loveStatusTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltSexOrientation">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="性取向" HorizontalAlignment="Left" FontSize="25" 
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock  x:Name="sexOrientationTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+
+                        <ListViewItem x:Name="ltRealName">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="认证实名" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="realNameTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltGender">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="性别" HorizontalAlignment="Left" FontSize="25" 
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="genderTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltBirthday">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="生日" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="birthTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+
+                        <ListViewItem x:Name="ltStuId" >
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="学号" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="stuIdTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltInstitute">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="学院" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="instituteTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltMajor">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="专业" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="majorTextBlock"  HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+
+                        <ListViewItem x:Name="ltClassId">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="班级" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="classIdTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                        <ListViewItem x:Name="ltEntranceYear">
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="20,10">
+                                    <TextBlock Text="入学年份" HorizontalAlignment="Left" FontSize="25"  
+                                           VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="entranceYearTextBlock" HorizontalAlignment="Right" FontSize="20"
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </ListViewItem>
+                    </ListView.Items>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

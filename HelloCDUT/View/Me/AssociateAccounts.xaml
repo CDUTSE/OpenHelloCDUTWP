@@ -1,0 +1,317 @@
+﻿<Page
+    x:Class="你好理工.View.Me.AssociateAccounts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View.Scholl"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <SlideNavigationTransitionInfo/>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    
+    <Page.Resources>
+        <Style x:Key="BindStyle" TargetType="Button" BasedOn="{StaticResource LightButtonStyle}">
+            <Setter Property="Background" Value="Red"/>
+        </Style>
+
+        <Style x:Key="UnBindStyle" TargetType="Button" BasedOn="{StaticResource LightButtonStyle}">
+            <Setter Property="Background" Value="{ThemeResource AppThemeColorBrush}"/>
+        </Style>
+
+    </Page.Resources>
+    
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="AppName" Text="关联账号" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <ListView ScrollViewer.VerticalScrollMode="Enabled">
+                    <ListView.Resources>
+                        <Style x:Key="GridStyle" TargetType="Grid">
+                            <Setter Property="Margin" Value="15,10,10,0"/>
+                        </Style>
+                        <Style x:Key="ImageStyle" TargetType="Image">
+                            <Setter Property="Margin" Value="0,0,10,0"/>
+                        </Style>
+
+                        <Style x:Key="StretchTitleTextBlockStyle" TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="FontSize" Value="20"/>
+                        </Style>
+                        <Style x:Key="StretchDescTextBlockStyle" TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="Opacity" Value="0.8"/>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                        
+                    </ListView.ItemContainerStyle>
+                    <ListView.Items>
+                        <ListViewItem>
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:NavigateToPageAction TargetPage=""/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                            <Grid Style="{ThemeResource GridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Viewbox>
+                                    <Grid>
+                                        <Grid Background="{ThemeResource AppThemeColorBrush}"/>
+                                        <Path Data="M7.3216413,10.299L7.3216413,14.568538 20.129,14.568538 20.129,17.064661 7.3216413,17.064661 7.3216413,21.333 1.8059999,15.815949z M12.80675,0L18.320999,5.51717 12.80675,11.033 12.80675,6.764585 0,6.764585 0,4.2684045 12.80675,4.2684045z" 
+                                                Stretch="Uniform" Fill="#FFFFFFFF" Width="138" Height="138" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <TransformGroup.Children>
+                                                        <RotateTransform Angle="0" />
+                                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                                    </TransformGroup.Children>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Viewbox>
+                                <Image Grid.Column="0" Style="{StaticResource ImageStyle}" Visibility="Collapsed"
+                                       Source="ms-appx:///Assets/Settings/Bind_stu_num.png"/>
+                                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                    <TextBlock Text="学号" Style="{StaticResource StretchTitleTextBlockStyle}"/>
+                                    <TextBlock x:Name="stdIdTextBlock"  Style="{StaticResource StretchDescTextBlockStyle}"/>
+                                </StackPanel>
+                                <Button Grid.Column="2" Content="绑定" x:Name="aaoBtn" HorizontalAlignment="Stretch"
+                                        Style="{ThemeResource LightButtonStyle}" Click="aaoBtn_Click"/>
+                            </Grid>
+                        </ListViewItem>
+
+                        <ListViewItem>
+                            <Grid Style="{ThemeResource GridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Viewbox>
+                                    <Grid>
+                                        <Grid Background="{ThemeResource AppThemeColorBrush}" />
+                                        <Path Data="M41.1684,45.487038C44.33276,45.476124 47.116478,47.775484 47.619183,50.997017 48.173893,54.552612 45.741444,57.884518 42.186676,58.439186 38.631909,58.993855 35.299843,56.561596 34.745133,53.007202 34.189225,49.452806 36.621571,46.1208 40.176239,45.566132 40.509629,45.514019 40.841049,45.488167 41.1684,45.487038z M10.237135,35.558062L10.350618,35.901613C13.537862,45.15811,22.303875,51.450747,32.124443,51.476969L32.24012,51.475981 32.232979,51.574453C32.204815,52.168505 32.235886,52.774008 32.33125,53.384045 32.497891,54.451855 32.847706,55.446404 33.343685,56.340675L33.528836,56.655979 33.263104,56.66925C20.287924,57.165882,8.592234,48.699957,4.9941953,36.24795L4.991,36.236345 5.2068322,36.273844C6.0781415,36.403109 6.9829696,36.404837 7.8980048,36.262007 8.6605371,36.142996 9.3857501,35.930498 10.063782,35.638014z M6.5030173,20.89604C9.6663612,20.885077 12.450289,23.184638 12.954178,26.407125 13.508891,29.961675 11.076529,33.293532 7.521735,33.848207 3.9656423,34.402784 0.63486499,31.970687 0.078820122,28.416241 -0.47588428,24.861691 1.9564295,21.529734 5.5112136,20.975158 5.8444722,20.923035 6.1757749,20.897175 6.5030173,20.89604z M58.8219,18.574822L59.004681,19.084795C59.543209,20.648768 59.951763,22.281796 60.215809,23.973269 61.800083,34.122046 57.788403,43.852476 50.472401,50.025568L49.996003,50.417795 49.950493,50.167978C49.607575,48.524141,48.825226,47.070471,47.747254,45.912016L47.524395,45.683733 47.536305,45.673433C53.238133,40.622065 56.328049,32.862471 55.065937,24.777964 54.881249,23.594744 54.609913,22.446564 54.259404,21.338879L54.134854,20.961815 54.432953,20.907509C56.076813,20.564614,57.530503,19.782418,58.688969,18.704576z M52.585079,5.624033C55.74844,5.6138992 58.532292,7.9135618 59.036179,11.13474 59.590893,14.689362 57.158524,18.021196 53.603829,18.575868 50.047627,19.131741 46.715535,16.699662 46.16082,13.145139 45.606106,9.5893164 48.038472,6.2575331 51.59327,5.7028704 51.926533,5.6508484 52.25784,5.6250811 52.585079,5.624033z M32.156784,0.00014686584C37.614365,-0.017484665,42.811852,1.5448036,47.233734,4.3107109L47.724335,4.6257896 47.518517,4.7606697C46.206982,5.6667137,45.162045,6.9076052,44.488583,8.3395329L44.348809,8.6562643 43.997319,8.4421854C39.538208,5.7988148 34.168194,4.6310177 28.646389,5.4929276 20.363682,6.7857971 13.798057,12.32467 10.820051,19.546529L10.815107,19.558941 10.701824,19.495367C9.3059848,18.755269,7.7060798,18.377093,6.0457643,18.465707L5.6350406,18.498096 5.7456864,18.199476C9.2659248,9.0405502 17.451128,1.9652042 27.841681,0.34318161 29.291645,0.11686516 30.733063,0.0047473907 32.156784,0.00014686584z" Stretch="Uniform" Fill="#FFFFFFFF" Width="138" Height="138" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <TransformGroup.Children>
+                                                        <RotateTransform Angle="0" />
+                                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                                    </TransformGroup.Children>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Viewbox>
+
+                                <Image Grid.Column="0" Visibility="Collapsed" Style="{StaticResource ImageStyle}"
+                                       Source="ms-appx:///Assets/Settings/Bind_library.png"/>
+                                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                    <TextBlock Text="图书馆" Style="{StaticResource StretchTitleTextBlockStyle}"/>
+                                    <TextBlock x:Name="libTextBlock" Style="{StaticResource StretchDescTextBlockStyle}"/>
+                                </StackPanel>
+                                <Button Grid.Column="2" x:Name="libBtn" Content="绑定" HorizontalAlignment="Stretch"
+                                        Style="{ThemeResource LightButtonStyle}" Click="libBtn_Click"/>
+                            </Grid>
+                        </ListViewItem>
+
+                        <ListViewItem>
+                            <Grid Style="{ThemeResource GridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Viewbox >
+                                    <Grid>
+                                        <Grid Background="{ThemeResource AppThemeColorBrush}"/>
+                                        <Path Data="M17.206791,9.0460004L21.333,9.0460004 21.333,11.087394 19.238047,11.087394C18.214569,14.78771 14.833142,17.518001 10.811131,17.518001 7.760437,17.518001 5.0729957,15.949021 3.5039999,13.576903L5.9375367,13.576903C7.1796398,14.834606 8.9036016,15.615847 10.811131,15.615847 13.775866,15.615847 16.268011,13.721392 17.22369,11.087394L17.206791,11.087394z M10.81104,5.4489998C12.637873,5.4489998 14.120999,6.9321765 14.120999,8.7588701 14.120999,10.585772 12.637873,12.068999 10.81104,12.068999 8.9842463,12.068999 7.5009999,10.585772 7.5009999,8.7588701 7.5009999,6.9321765 8.9842463,5.4489998 10.81104,5.4489998z M10.811142,0C14.175724,-7.1568678E-08,17.097509,1.9089009,18.565001,4.6964339L16.308413,4.6964339C15.059819,3.0089685 13.07163,1.9023011 10.811142,1.9023014 7.5350595,1.9023011 4.806004,4.2030439 4.124918,7.273291L4.124918,9.3149995 0,9.3149995 0,7.273291 2.1874883,7.273291C2.8957345,3.1510555,6.4869051,-7.1568678E-08,10.811142,0z" 
+                                              Stretch="Uniform" Fill="#FFFFFFFF" MinWidth="50" MinHeight="50" RenderTransformOrigin="0.5,0.5">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <TransformGroup.Children>
+                                                        <RotateTransform Angle="0" />
+                                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                                    </TransformGroup.Children>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Viewbox>
+
+                                <Image Grid.Column="0" Style="{StaticResource ImageStyle}" Visibility="Collapsed"
+                                       Source="ms-appx:///Assets/Settings/Bind_campus_card.png"/>
+                                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                    <TextBlock Text="一卡通" Style="{StaticResource StretchTitleTextBlockStyle}"/>
+                                    <TextBlock x:Name="campusCardTextBlock" Style="{StaticResource StretchDescTextBlockStyle}"/>
+                                </StackPanel>
+                                <Button Grid.Column="2" x:Name="campusCardBtn" Content="绑定" HorizontalAlignment="Stretch"
+                                        Style="{ThemeResource LightButtonStyle}" Click="campusCardBtn_Click">
+                                    <VisualStateManager.VisualStateGroups>
+                                 
+                                    <VisualStateGroup>
+                                            <VisualStateGroup.Transitions>
+                                                
+                                            </VisualStateGroup.Transitions>
+                                            <VisualState x:Name="Binded">
+                                                <Storyboard>
+                                                    <PointerDownThemeAnimation Storyboard.TargetName="Grid"/>
+
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                        <DiscreteObjectKeyFrame KeyTime="0" Value="Red"/>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="UnBinded">
+                                                
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Button>
+                            </Grid>
+                        </ListViewItem>
+
+                        <ListViewItem>
+                            <Grid Style="{ThemeResource GridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Viewbox>
+                                    <Grid>
+                                        <Grid Background="{ThemeResource AppThemeColorBrush}" />
+                                        <Path Data="M0,1.4200591L0.040033408,1.4200591 12.618441,13.742285 26.626588,27.494828 40.634736,13.742285 53.213021,1.4200591 53.333001,1.4200591 53.333001,39.08706 0,39.08706z M3.1698927,0L26.665893,0 50.161893,0 38.413892,9.8814956 26.665893,19.76299 14.917893,9.8814956z" Stretch="Uniform" Fill="#FFFFFFFF" Width="138" Height="138" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <TransformGroup.Children>
+                                                        <RotateTransform Angle="0" />
+                                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                                    </TransformGroup.Children>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Viewbox>
+                                <Image Grid.Column="0" Style="{StaticResource ImageStyle}" Visibility="Collapsed"
+                                       Source="ms-appx:///Assets/Settings/Bind_mail.png"/>
+                                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                    <TextBlock Text="邮箱" Style="{StaticResource StretchTitleTextBlockStyle}"/>
+                                    <TextBlock x:Name="emailTextBlock" Style="{StaticResource StretchDescTextBlockStyle}"/>
+                                </StackPanel>
+                                <Button Grid.Column="2" x:Name="emailBtn" Content="绑定" HorizontalAlignment="Stretch"
+                                        Style="{ThemeResource LightButtonStyle}" Click="emailBtn_Click"/>
+                            </Grid>
+                        </ListViewItem>
+
+                        
+                    </ListView.Items>
+                </ListView>
+            </Grid>
+            
+            <!--邮箱输入Popup-->
+            <Popup x:Name="emailPopup" 
+              Margin="0,-27,0,0"
+               VerticalAlignment="Top"
+               Height="250"
+               IsLightDismissEnabled="True" 
+               IsOpen="False"
+               HorizontalOffset="0"
+               UseLayoutRounding="True"
+               VerticalOffset="0"
+               Grid.Row="0"
+               Grid.RowSpan="2"
+               >
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PaneThemeTransition Edge="Top"></PaneThemeTransition>
+                        <!--<PopupThemeTransition FromVerticalOffset="332"/>-->
+                        <!--<EntranceThemeTransition IsStaggeringEnabled="True"/>-->
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+                <Popup.Child>
+                    <Grid x:Name="popGrid" VerticalAlignment="Top"  Background="Black" Opacity="0.9" HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="txtBlockName"
+                               Grid.Row="0"
+                               FontSize="25"
+                               Margin="10,20,10,0"
+                               Foreground="White"/>
+                        <TextBlock Grid.Row="1" x:Name="txtBlockMac" 
+                               FontSize="20" 
+                               Margin="10,0,10,0"
+                               Foreground="White"/>
+                        <TextBox x:Name="emailTextBox" Grid.Row="2" 
+                             Margin="10,0,10,10"
+                             PlaceholderText="请输入邮箱"
+                             Style="{ThemeResource LightTextBox}"/>
+                        <Grid Grid.Row="3"  Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="解除绑定" 
+                                x:Uid="UYes"
+                                    x:Name="yesBtn"
+                                Grid.Column="0" 
+                                RequestedTheme="Dark"
+                                HorizontalAlignment="Stretch"  
+                                Margin="0,0,5,0"
+                                    Click="yesBtn_Click"
+                                Style="{ThemeResource LightButtonStyle}"
+                                />
+                            <Button Content="取消" 
+                                    x:Name="cancleBtn"
+                                x:Uid="UCancle"
+                                Grid.Column="1" 
+                                 RequestedTheme="Dark"
+                                HorizontalAlignment="Stretch" 
+                                Margin="5,0,0,0"
+                                    Click="cancleBtn_Click"
+                                Style="{ThemeResource LightButtonStyle}"
+                                />
+                        </Grid>
+
+                    </Grid>
+                </Popup.Child>
+
+            </Popup>
+        </Grid>
+    </Grid>
+</Page>

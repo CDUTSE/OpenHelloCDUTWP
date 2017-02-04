@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="你好理工.View.AAONewsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="AppName" Text="教务新闻" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <ListView x:Name="newsListView" 
+                          IsItemClickEnabled="True"
+                          Loaded="newsListView_Loaded"
+                          ItemClick="newsListView_ItemClick">
+                    
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                <Grid Margin="15,5">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding newsTitle}" FontSize="20" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding newsPostDate}" FontSize="20" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                    <!--<ListView.Items>
+                        <ListViewItem>
+                            <StackPanel>
+                                <TextBlock Text="aaaasdf" FontSize="25"/>
+                                <TextBlock Text="asdfasdf" HorizontalAlignment="Right"
+                                           FontSize="20"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView.Items>-->
+                </ListView>
+                <ProgressRing x:Name="progressRing0" IsActive="True" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" Background="Transparent" Foreground="{ThemeResource PhoneForegroundBrush}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+    
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <AppBarButton x:Name="refreshAppbar" Icon="Refresh" Label="刷新" Click="refreshAppbar_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

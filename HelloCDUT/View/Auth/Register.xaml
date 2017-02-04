@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="你好理工.View.Auth.Register"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        
+    </Page.Resources>
+
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock Text="注册" Style="{ThemeResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <StackPanel Margin="20">
+                    <TextBox x:Name="txtAccount" PlaceholderText="账号 (小写字母开头，6-15位)" Style="{ThemeResource LightTextBox}"
+                             />
+                    <PasswordBox x:Name="txtPassword" PlaceholderText="密码" Style="{ThemeResource LightPasswordStyle}"
+                             />
+                    <PasswordBox PlaceholderText="确认密码" x:Name="txtSurePassword" Style="{ThemeResource LightPasswordStyle}"
+                             />
+                        <CheckBox x:Name="CheckBox" MinWidth="0"  Style="{ThemeResource LightCheckBoxStyle}">
+                            <CheckBox.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="同意" VerticalAlignment="Center"/>
+                                <HyperlinkButton Foreground="{ThemeResource AppThemeColorBrush}" FontSize="20" VerticalAlignment="Center"  Tapped="HyperlinkButton_Tapped">《Hello CDUT用户使用协议》</HyperlinkButton>
+                    
+                            </StackPanel>
+                            </CheckBox.Content>
+                        </CheckBox>
+                    
+                    <Button Content="注册" Style="{ThemeResource LightButtonStyle}" 
+                            IsEnabled="{Binding ElementName=CheckBox,Path=IsChecked}"
+                            Click="Button_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

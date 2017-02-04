@@ -1,0 +1,228 @@
+﻿<Page
+    x:Class="你好理工.View.School.Search.ClassRoomSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View.School.Search"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:DesignTime="using:你好理工.DesignTime"
+    xmlns:converter="using:你好理工.Converter"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True,Type=DesignTime:RoomStatusViewModel}">
+    <Page.Resources>
+        <Style x:Key="RoomStatusTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource PhoneForegroundBrush}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+        
+        <Style x:Key="WhiteRoomStatusTextBlockStyle" BasedOn="{StaticResource RoomStatusTextBlockStyle}" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="RoundBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Margin" Value="0,0,1,0"/>
+        </Style>
+        
+        <converter:StatusCode2StatusConverter x:Key="StatusCode2StatusConverter"/>
+        <converter:StatusCode2BackgroundConverter x:Key="StatusCode2BackgroundConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="pageTitleTextBlock" Text="教室状态查询" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--搜索条件区-->
+                <Grid Grid.Row="0" Margin="15,10,15,0" x:Name="searchConditionGrid" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox  Grid.Column="0" 
+                             Margin="0,0,5,0" 
+                                 Foreground="Black"
+                                  PlaceholderText="请选择一项"
+                              x:Name="buildingCbBox"
+                              Style="{ThemeResource LightComboBoxStyle}"
+                              VerticalAlignment="Center"
+                                 
+                                  >
+                            <ComboBox.Header>
+                                <TextBlock Text="教学楼号" Foreground="Black"/>
+                            </ComboBox.Header>
+                            <ComboBox.Resources>
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Foreground" Value="{ThemeResource PhoneForegroundBrush}"/>
+                                </Style>
+                            </ComboBox.Resources>
+                            
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding }"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                            <ComboBox.Items>
+                                <ComboBoxItem Content="第一教学楼" Foreground="Black" Tag="1"  IsSelected="True"/>
+                                <ComboBoxItem Content="第二教学楼" Foreground="Black" Tag="2"/>
+                                <ComboBoxItem Content="第三教学楼" Tag="3"/>
+                                <ComboBoxItem Content="第四教学楼" Tag="4"/>
+                                <ComboBoxItem Content="第五教学楼" Tag="5"/>
+                                <ComboBoxItem Content="第六教学楼A区" Tag="6a"/>
+                                <ComboBoxItem Content="第六教学楼B区" Tag="6b"/>
+                                <ComboBoxItem Content="第六教学楼C区" Tag="6c"/>
+                                <ComboBoxItem Content="第七教学楼" Tag="7"/>
+                                <ComboBoxItem Content="第八教学楼" Tag="8"/>
+                                <ComboBoxItem Content="第九教学楼" Tag="9"/>
+                                <ComboBoxItem Content="艺术大楼" Tag="art"/>
+                                <ComboBoxItem Content="东区第一教学楼" Tag="e1"/>
+                                <ComboBoxItem Content="东区第二教学楼" Tag="e2"/>
+                            </ComboBox.Items>
+                        </ComboBox>
+                        <DatePicker Grid.Column="1" 
+                                VerticalAlignment="Center" x:Name="datePicker"
+                                 
+                                Style="{ThemeResource LightDatePickerStyle}">
+                            <DatePicker.Header>
+                                <TextBlock Text="日期" Foreground="Black"/>
+                            </DatePicker.Header>
+                        </DatePicker>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center"
+                               FontSize="15" HorizontalAlignment="Stretch"
+                                   TextWrapping="Wrap">
+                            <TextBlock.Inlines>
+                                <Run>数据最后更新于：</Run>
+                                <Run x:Name="txtBlockLastUpdateTime"/>
+                            </TextBlock.Inlines>
+                        </TextBlock>
+                        <Button Style="{ThemeResource LightButtonStyle}"
+                             Grid.Column="1" x:Name="searchBtn" Click="searchBtn_Click"
+                            Content="查询" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Grid>
+                
+                <!--教室状态区-->
+                <Grid Grid.Row="1"   ScrollViewer.VerticalScrollMode="Enabled" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid  Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="LightGray"/>
+                        <Border Grid.Column="2" Background="LightGray"/>
+                        <Border Grid.Column="4" Background="LightGray"/>
+                        <Border Grid.Column="6" Background="LightGray"/>
+                        <TextBlock Text="教室" Foreground="Black" Style="{StaticResource RoomStatusTextBlockStyle}" />
+                        <TextBlock Text="座位" Grid.Column="1" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                            <TextBlock Text="1-2节" Foreground="Black" Grid.Column="2" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                        <TextBlock Text="3-4节" Grid.Column="3" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                        <TextBlock Text="5-6节" Foreground="Black" Grid.Column="4" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                        <TextBlock Text="7-8节" Grid.Column="5" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                        <TextBlock Text="9-11节" Foreground="Black" Grid.Column="6" Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                    </Grid>
+                    <ListView ItemsSource="{Binding RoomList}" Grid.Row="1" 
+                              x:Name="roomStatusListView"
+                              Loaded="roomStatusListView_Loaded"
+                              ScrollViewer.VerticalScrollMode="Enabled">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                <Setter Property="Margin" Value="0,2,0,2"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0">
+                                    <TextBlock Grid.Column="0" Text="{Binding roomName}" 
+                                               Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Grid.Column="1">
+                                        <TextBlock Grid.Column="1" Text="{Binding seatNum}" 
+                                               Style="{StaticResource RoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource RoundBorderStyle}" Grid.Column="2" Background="{Binding status[0],Converter={StaticResource StatusCode2BackgroundConverter}}">
+                                    <TextBlock  Text="{Binding status[0],Converter={StaticResource StatusCode2StatusConverter}}" 
+                                               Style="{StaticResource WhiteRoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource RoundBorderStyle}" Grid.Column="3" Background="{Binding status[1],Converter={StaticResource StatusCode2BackgroundConverter}}">
+                                        <TextBlock  Text="{Binding status[1],Converter={StaticResource StatusCode2StatusConverter}}" 
+                                               Style="{StaticResource WhiteRoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource RoundBorderStyle}" Grid.Column="4" Background="{Binding status[2],Converter={StaticResource StatusCode2BackgroundConverter}}">
+                                        <TextBlock  Text="{Binding status[2],Converter={StaticResource StatusCode2StatusConverter}}" 
+                                               Style="{StaticResource WhiteRoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource RoundBorderStyle}" Grid.Column="5" Background="{Binding status[3],Converter={StaticResource StatusCode2BackgroundConverter}}">
+                                        <TextBlock  Text="{Binding status[3],Converter={StaticResource StatusCode2StatusConverter}}"
+                                               Style="{StaticResource WhiteRoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                    <Border Style="{StaticResource RoundBorderStyle}" Grid.Column="6" Background="{Binding status[4],Converter={StaticResource StatusCode2BackgroundConverter}}">
+                                        <TextBlock  Text="{Binding status[4],Converter={StaticResource StatusCode2StatusConverter}}"
+                                               Style="{StaticResource WhiteRoomStatusTextBlockStyle}"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                
+                    <!--正在加载-->
+                    <Grid x:Name="loadingGrid" Grid.Row="1" 
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          Background="LightGray">
+                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                            <ProgressRing Background="Transparent" Margin="10" Foreground="Black" IsActive="True"/>
+                            <TextBlock Text="正在加载" Foreground="Black" FontSize="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

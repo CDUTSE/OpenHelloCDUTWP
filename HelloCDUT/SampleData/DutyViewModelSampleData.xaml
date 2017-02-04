@@ -1,0 +1,14 @@
+﻿<ViewModel:DutyViewModel xmlns:ViewModel="using:你好理工.ViewModel" xmlns:Model="using:你好理工.Model">
+	<ViewModel:DutyViewModel.dutyCollection>
+		<Model:DutyModel DutyName="Maecenas vestibulum aenean" IconPath="ms-appx:///Assets/Windows.png" BackgroundColor="Cyan"/>
+		<Model:DutyModel DutyName="Cras class curae parturient nam" IconPath="ms-appx:///Assets/Windows.png" BackgroundColor="Orange"/>
+		<Model:DutyModel DutyName="Nullam quisque aptent" IconPath="Duis donec etiam sed vestibulum" BackgroundColor="OrangeRed"/>
+		<Model:DutyModel DutyName="Accumsan dis" IconPath="Vestibulum est hac" BackgroundColor="LightBlue"/>
+		<Model:DutyModel DutyName="Nunc bibendum adipiscing" IconPath="Auctor amet dictumst leo" BackgroundColor="LightGreen"/>
+		<Model:DutyModel DutyName="Mus eleifend" IconPath="Parturient consequat convallis dignissim" BackgroundColor="Gray"/>
+		<Model:DutyModel DutyName="Vivamus ante congue cursus" IconPath="Arcu vestibulum" BackgroundColor="Lavender"/>
+		<Model:DutyModel DutyName="Fusce aliquam" IconPath="Diam aliquet vestibulum eget"/>
+		<Model:DutyModel DutyName="Blandit elementum" IconPath="Commodo nec facilisi facilisis"/>
+		<Model:DutyModel DutyName="Faucibus habitant dictum lectus conubia" IconPath="Lorem fermentum"/>
+	</ViewModel:DutyViewModel.dutyCollection>
+</ViewModel:DutyViewModel>

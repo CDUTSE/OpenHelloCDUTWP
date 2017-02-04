@@ -1,0 +1,360 @@
+﻿<Page
+    x:Class="你好理工.School.CampusCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.School"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <SlideNavigationTransitionInfo/>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock Text="一卡通" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalAlignment="Stretch" Grid.Row="0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0" x:Name="radioButton0" TabIndex="0" Content="消费统计" Style="{StaticResource RadioButtonStyle}"
+                                 Click="RadioButton_Click"/>
+                    <RadioButton Grid.Column="1" x:Name="radioButton1" TabIndex="1" Content="消费记录" Style="{StaticResource RadioButtonStyle}"
+                                 Click="RadioButton_Click"/>
+                    <RadioButton Grid.Column="2" x:Name="radioButton2" TabIndex="2" Content="消费查询" Style="{StaticResource RadioButtonStyle}"
+                                 Click="RadioButton_Click"/>
+
+                </Grid>
+                
+                <Pivot Grid.Row="1" x:Name="pivot" Margin="0" SelectionChanged="pivot_SelectionChanged">
+                    <PivotItem Margin="0" >
+                        <PivotItem.Header>
+                            <TextBlock Text="消费统计" FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" />
+                        </PivotItem.Header>
+                        <Grid>
+                            <ProgressRing x:Name="progressRing0"  Foreground="{ThemeResource PhoneForegroundBrush}"
+                                          Background="Transparent" IsActive="False" HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            <ListView Background="Transparent" ScrollViewer.VerticalScrollMode="Enabled"
+                                      Padding="20,0" x:Name="statisticListView">
+                                
+                                <ListView.Transitions>
+                                    <TransitionCollection>
+                                        <AddDeleteThemeTransition/>
+                                        <ContentThemeTransition/>
+                                        <EntranceThemeTransition/>
+                                    </TransitionCollection>
+                                </ListView.Transitions>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Foreground" Value="{ThemeResource PhoneForegroundBrush}"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" >
+                                            <Grid Margin="0,10" >
+                                                <TextBlock HorizontalAlignment="Left"  VerticalAlignment="Center" Text="{Binding Title}" FontSize="24"/>
+                                                <TextBlock HorizontalAlignment="Right"  
+                                                           Text="{Binding Desc}" VerticalAlignment="Center" FontSize="24"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                                
+                            </ListView>
+                        </Grid>
+                    </PivotItem>
+                    <PivotItem Margin="0" >
+                        <PivotItem.Header>
+                            <TextBlock Text="消费记录"  FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" />
+                        </PivotItem.Header>
+                        <Grid>
+                            <ProgressRing x:Name="progressRing1" Foreground="{ThemeResource PhoneForegroundBrush}" 
+                                          Background="Transparent" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ListView x:Name="recordListView"     CommonNavigationTransitionInfo.IsStaggerElement="True"
+                                      Loaded="recordListView_Loaded" Padding="20,0"
+                                       ScrollViewer.VerticalScrollMode="Enabled" 
+                                       ContainerContentChanging="recordListView_ContainerContentChanging">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="LightGray" BorderThickness="0,0,0,1">
+                                            <Grid Margin="0,5" >
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding item}" Foreground="{ThemeResource PhoneForegroundBrush}" FontSize="24" Margin="0,0,0,5"/>
+                                                        <TextBlock FontSize="16" HorizontalAlignment="Left" Foreground="{ThemeResource PhoneForegroundBrush}">
+                                                            <Run Text="交易金额："/>
+                                                            <Run Text="{Binding money}"/>
+                                                            <Run Text="    "/>
+                                                            <Run Text="余额："></Run>
+                                                            <Run Text="{Binding balance}"></Run>
+                                                        </TextBlock>
+                                                
+                                                    <Grid>
+                                                        <TextBlock FontSize="16" HorizontalAlignment="Left">
+                                                            <Run Text="操作员："/>
+                                                            <Run Text="{Binding operator}"/>
+                                                        </TextBlock>
+                                                        <TextBlock FontSize="16" HorizontalAlignment="Right">
+                                                            <Run Text="地点："/>
+                                                            <Run Text="{Binding workstation}"/>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                    <TextBlock FontSize="16" Foreground="{ThemeResource PhoneForegroundBrush}">
+                                                        <Run Text="时间："/>
+                                                        <Run Text="{Binding date}"/>
+                                                        <Run Text="{Binding time}"/>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Transitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition/>
+                                        <AddDeleteThemeTransition/>
+                                    </TransitionCollection>
+                                </ListView.Transitions>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Foreground" Value="{ThemeResource PhoneForegroundBrush}"/>
+                                        <!--<Setter Property="Margin" Value="15,0"/>-->
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <!--<ListView.Items>
+                                    <ListViewItem>
+                                        <Border BorderBrush="Black" BorderThickness="0,0,0,1">
+                                            <Grid Margin="15,0,0,5">
+                                                <StackPanel>
+                                                    <TextBlock Text="餐费支出" FontSize="24"/>
+                                                    <Grid>
+                                                        <TextBlock FontSize="20" HorizontalAlignment="Left">
+                                                    <Run Text="交易金额"/>
+                                                    <Run Text="5.00"/>
+                                                        </TextBlock >
+                                                        <TextBlock HorizontalAlignment="Right" FontSize="20">
+                                                    <Run>余额</Run>
+                                                    <Run>20.05</Run>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <TextBlock FontSize="20" HorizontalAlignment="Left">
+                                                    <Run Text="操作员："/>
+                                                    <Run Text="虚拟职员"/>
+                                                        </TextBlock>
+                                                        <TextBlock FontSize="20" HorizontalAlignment="Right">
+                                                        <Run Text="地点"/>
+                                                        <Run Text="珙桐食堂数据网关"/>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                    <TextBlock FontSize="15">
+                                                    <Run Text="时间："/>
+                                                    <Run Text="2015/11/18"/>
+                                                    <Run Text="10：00：45"/>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </ListViewItem>
+                                </ListView.Items>-->
+                            </ListView>
+                        </Grid>
+                        
+                    </PivotItem>
+                    <PivotItem Margin="0" Padding="20,0" >
+                        <PivotItem.Header>
+                            <TextBlock Text="消费查询"  FontSize="{StaticResource TextStyleExtraExtraLargeFontSize}" />
+                        </PivotItem.Header>
+                        <Grid>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="查询类型：" Foreground="{ThemeResource PhoneForegroundBrush}" VerticalAlignment="Center" FontSize="25"/>
+                                    <ComboBox x:Name="typeCbBox" Grid.Column="1" Style="{ThemeResource LightComboBoxStyle}" >
+                                        <ComboBoxItem Content="存款信息" IsSelected="True"/>
+                                        <ComboBoxItem Content="消费信息"/>
+                                        <ComboBoxItem Content="交易汇总"/>
+                                    </ComboBox>
+                                </Grid>
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Text="开始日期：" Foreground="{ThemeResource PhoneForegroundBrush}"  VerticalAlignment="Center" FontSize="25"/>
+                                    <DatePicker x:Name="startDatePicker" Style="{ThemeResource LightDatePickerStyle}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Text="结束日期：" Foreground="{ThemeResource PhoneForegroundBrush}" VerticalAlignment="Center" FontSize="25"/>
+                                    <DatePicker x:Name="endDatePicker" Style="{ThemeResource LightDatePickerStyle}"/>
+                                </StackPanel>
+                                <Button Content="查询" x:Name="search" Click="search_Click" Style="{ThemeResource LightButtonStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </PivotItem>
+                </Pivot>
+            </Grid>
+        </Grid>
+        
+        <Popup x:Name="bindCampusPopup" 
+               VerticalAlignment="Stretch"
+               
+               IsOpen="False" 
+               HorizontalOffset="0"
+               UseLayoutRounding="True"
+               
+               >
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <!--<PaneThemeTransition Edge="Top"></PaneThemeTransition>-->
+                    <PopupThemeTransition FromVerticalOffset="332"/>
+                    <!--<EntranceThemeTransition IsStaggeringEnabled="True"/>-->
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Popup.Child>
+                <Border x:Name="popBorder" Background="Black" Opacity="0.8" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border Background="White" Height="260"  HorizontalAlignment="Stretch"
+                            Padding="5" VerticalAlignment="Top">
+                        <Grid x:Name="popGrid"  VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="绑定一卡通" 
+                               Grid.Row="0"
+                               FontSize="25"
+                               Foreground="{ThemeResource AppThemeColorBrush}"/>
+                            <TextBox x:Name="txtAAOAccount" Grid.Row="1"  PlaceholderText="一卡通账号" 
+                                     Style="{ThemeResource LightTextBox}"/>
+                            <PasswordBox x:Name="txtAAOPwdBox" Grid.Row="2" PlaceholderText="一卡通密码"
+                             Style="{ThemeResource LightPasswordStyle}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="checkCode_Image" Width="100" Height="40"/>
+                                <TextBox/>
+                                <Button>
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Refresh"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                            <Grid Grid.Row="3"  >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="绑定" 
+                                x:Name="bindBtn" Click="bindBtn_Click"
+                                Grid.Column="0" 
+                                HorizontalAlignment="Stretch"  
+                                Style="{ThemeResource LightButtonStyle}"
+                               />
+                                <Button Content="取消" 
+                                x:Name="cancleBtn" Click="cancleBtn_Click"
+                                Grid.Column="1" 
+                                HorizontalAlignment="Stretch" 
+                                Margin="5,0,0,0"
+                                Style="{ThemeResource LightButtonStyle}"
+                                />
+                            </Grid>
+
+
+                        </Grid>
+                    </Border>
+                </Border>
+            </Popup.Child>
+
+        </Popup>
+
+        <!--获取一卡通登录验证码的Popup-->
+        <Popup x:Name="getAuthCodePopup" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+               Margin="0,0,0,0" IsLightDismissEnabled="False" >
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <!--<PaneThemeTransition Edge="Top"></PaneThemeTransition>-->
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Popup.Child>
+                <Border x:Name="authGridBorder" Background="Black" Opacity="0.8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid x:Name="getAuthGrid" Background="Black"  
+                        VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="需要输入验证码" Margin="10,30,0,0"
+                            Foreground="White" FontSize="25"/>
+                        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="captchaTextBlock" Grid.Column="0" PlaceholderText="右侧验证码" 
+                                     Style="{ThemeResource LightTextBox}" VerticalAlignment="Stretch"
+                                     Height="Auto"/>
+                            <Grid Grid.Column="1"  HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button HorizontalAlignment="Left" x:Name="btnRefresh" MinWidth="0" MinHeight="0"
+                                    Grid.Column="0" Style="{ThemeResource LightButtonStyle}"
+                                    Click="btnRefresh_Click" VerticalAlignment="Stretch" Height="Auto">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Refresh" />
+                                    </Button.Content>
+                                </Button>
+                                <Image x:Name="authCodeImage" HorizontalAlignment="Stretch" 
+                                        Grid.Column="1">
+                                </Image>
+                            </Grid>
+                        </Grid>
+                        <Button Grid.Row="2" x:Name="captchaBtn" Click="captchaBtn_Click"
+                            Margin="10,0"
+                            Style="{ThemeResource LightButtonStyle}" Content="确定"/>
+                    </Grid>
+                </Border>
+            </Popup.Child>
+        </Popup>
+      
+    </Grid>
+    
+    <Page.BottomAppBar>
+        <CommandBar x:Name="appbar" ClosedDisplayMode="Minimal" Opacity="0.99">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Refresh" x:Name="refreshAppbar" Click="refreshAppbar_Click" Label="刷新"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

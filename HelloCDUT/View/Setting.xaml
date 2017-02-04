@@ -1,0 +1,134 @@
+﻿<Page
+    x:Class="你好理工.View.Setting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:你好理工.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <SlideNavigationTransitionInfo/>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    
+    <Grid>
+        <Grid Style="{ThemeResource PageRootGridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--标题栏-->
+            <StackPanel Grid.Row="0" Background="{ThemeResource AppThemeColorBrush}">
+                <TextBlock x:Name="AppName" Text="设置" Style="{StaticResource PageTitleStyle}"/>
+            </StackPanel>
+            <!--内容-->
+            <Grid Grid.Row="1" Background="{ThemeResource PageBackground}" >
+                <StackPanel>
+                    <ListView ScrollViewer.VerticalScrollMode="Disabled"
+                             Background="Transparent">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="FontSize" Value="24"/>
+                                <!--<Setter Property="Margin" Value="15,10"/>-->
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.Items>
+                            <ListViewItem Visibility="Collapsed">
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="消息及提醒" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+
+                            <ListViewItem Visibility="Collapsed">
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"  >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="聊天" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+
+                            <ListViewItem Visibility="Collapsed">
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="静默模式" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+
+                            <ListViewItem>
+                                <Interactivity:Interaction.Behaviors>
+                                    <Core:EventTriggerBehavior EventName="Tapped">
+                                        <Core:NavigateToPageAction TargetPage="你好理工.View.Me.Setting.Account"/>
+                                    </Core:EventTriggerBehavior>
+                                </Interactivity:Interaction.Behaviors>
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="账号" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+
+                            <ListViewItem Visibility="Visible">
+                                <Interactivity:Interaction.Behaviors>
+                                    <Core:EventTriggerBehavior EventName="Tapped">
+                                        <Core:NavigateToPageAction TargetPage="你好理工.View.Me.Setting.Theme"/>
+                                    </Core:EventTriggerBehavior>
+                                </Interactivity:Interaction.Behaviors>
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="背景" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+                            
+                            <ListViewItem>
+                                <Interactivity:Interaction.Behaviors>
+                                    <Core:EventTriggerBehavior EventName="Tapped">
+                                        <Core:NavigateToPageAction TargetPage="你好理工.View.Scholl.Setting.Feedback"/>
+                                    </Core:EventTriggerBehavior>
+                                </Interactivity:Interaction.Behaviors>
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"  >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="意见反馈" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+                           
+                            <ListViewItem>
+                                <Interactivity:Interaction.Behaviors>
+                                    <Core:EventTriggerBehavior EventName="Tapped">
+                                        <Core:NavigateToPageAction TargetPage="你好理工.View.Me.Setting.About"/>
+                                    </Core:EventTriggerBehavior>
+                                </Interactivity:Interaction.Behaviors>
+                                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"  >
+                                    <StackPanel Margin="15">
+                                        <TextBlock Text="关于" FontSize="24"/>
+                                    </StackPanel>
+                                </Border>
+                            </ListViewItem>
+                        </ListView.Items>
+
+                        
+                        
+                    </ListView>
+                    <Button Margin="15,20" Content="退出登录" Style="{ThemeResource LightButtonStyle}" 
+                            Background="Red" VerticalAlignment="Stretch" Click="Button_Click" />
+
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</Page>
